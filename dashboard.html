@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Capitex</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/auth.css"/>
+  <style>
+    .progress-bar { background: var(--cream2); border-radius: 50px; height: 6px; overflow: hidden; margin-top: .5rem; }
+    .progress-fill { height: 100%; background: var(--gold); border-radius: 50px; transition: width .6s ease; }
+    .ref-box {
+      background: var(--cream); border: 1px solid var(--cream2); border-radius: var(--radius-sm);
+      padding: 1rem; display: flex; align-items: center; gap: .75rem;
+    }
+    .ref-box code { flex:1; font-size:.82rem; color:var(--navy); font-family:monospace; word-break:break-all; }
+    .section-tab { display:none; }
+    .section-tab.active { display:block; }
+    .plan-enroll-btn { width:100%; margin-top:.6rem; padding:.45rem; border-radius:6px; font-size:.76rem; font-weight:700; border:1px solid rgba(201,168,76,.35); color:var(--gold); background:transparent; transition:all var(--tr); font-family:'DM Sans',sans-serif; cursor:pointer; }
+    .plan-enroll-btn:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+  </style>
+</head>
+<body>
+<div class="dash-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
+      <span class="brand-name">Cap<span>i</span>tex</span>
+    </div>
+    <div class="sidebar-user">
+      <div class="sidebar-avatar" id="sidebarAvatar">?</div>
+      <div class="sidebar-user-info"><div class="name" id="sidebarName">Loading…</div><div class="role">Investor</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="#" class="active" data-section="overview"><span class="icon">📊</span> Overview</a>
+      <a href="#" data-section="wallet"><span class="icon">💳</span> Wallet & Deposits</a>
+      <a href="#" data-section="portfolio"><span class="icon">📈</span> My Portfolio</a>
+      <a href="#" data-section="transactions"><span class="icon">📋</span> Transactions</a>
+      <div class="sidebar-section-label">Account</div>
+      <a href="#" data-section="plans"><span class="icon">🏆</span> Investment Plans</a>
+      <a href="#" data-section="referrals"><span class="icon">🔗</span> Referrals</a>
+      <a href="#" data-section="settings"><span class="icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../index.html"><span style="margin-right:.5rem">🌐</span> Back to Website</a>
+      <a href="#" id="logoutLink" style="margin-top:.75rem;color:#ff453a"><span style="margin-right:.5rem">🚪</span> Sign Out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="dash-main">
+    <div class="dash-topbar">
+      <span class="topbar-title" id="topbarTitle">Overview</span>
+      <div class="topbar-right">
+        <div class="topbar-notif">🔔<span class="notif-dot"></span></div>
+        <button class="btn btn-gold btn-sm" onclick="openDeposit()">+ Deposit</button>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <!-- OVERVIEW -->
+      <div class="section-tab active" id="tab-overview">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-card-icon icon-gold">💰</div>
+            <div class="stat-card-label">Wallet Balance</div>
+            <div class="stat-card-value" id="walletBal">$0.00</div>
+            <div class="stat-card-sub"><span class="trend trend-up">Available</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon icon-blue">📥</div>
+            <div class="stat-card-label">Total Invested</div>
+            <div class="stat-card-value" id="totalInvested">$0.00</div>
+            <div class="stat-card-sub">Across all plans</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon icon-green">📈</div>
+            <div class="stat-card-label">Total Returns</div>
+            <div class="stat-card-value" id="totalReturns">$0.00</div>
+            <div class="stat-card-sub"><span class="trend trend-up">↑ Lifetime</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon icon-purple">🏆</div>
+            <div class="stat-card-label">Active Plan</div>
+            <div class="stat-card-value" id="activePlan" style="font-size:1.2rem;text-transform:capitalize">—</div>
+            <div class="stat-card-sub">Current tier</div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-header"><h3>Portfolio Snapshot</h3><a href="#">View Full</a></div>
+            <div style="display:flex;flex-direction:column;gap:.75rem">
+              <div><div style="display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem"><span>Equities</span><span style="font-weight:700;color:var(--navy)" id="allocEquity">40%</span></div><div class="progress-bar"><div class="progress-fill" id="barEquity" style="width:40%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem"><span>Real Estate (REITs)</span><span style="font-weight:700;color:var(--navy)" id="allocReits">20%</span></div><div class="progress-bar"><div class="progress-fill" id="barReits" style="width:20%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem"><span>Bonds</span><span style="font-weight:700;color:var(--navy)" id="allocBonds">25%</span></div><div class="progress-bar"><div class="progress-fill" id="barBonds" style="width:25%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem"><span>Commodities</span><span style="font-weight:700;color:var(--navy)" id="allocComm">15%</span></div><div class="progress-bar"><div class="progress-fill" id="barComm" style="width:15%"></div></div></div>
+            </div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-header"><h3>Quick Actions</h3></div>
+            <div style="display:flex;flex-direction:column;gap:.75rem">
+              <button class="btn btn-gold btn-full" onclick="openDeposit()">💰 Deposit Funds</button>
+              <button class="btn btn-outline btn-full" onclick="openWithdraw()">📤 Request Withdrawal</button>
+              <button class="btn btn-outline btn-full" onclick="showSection('plans')">🏆 Upgrade Plan</button>
+              <button class="btn btn-outline btn-full" onclick="showSection('referrals')">🔗 Refer a Friend</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Recent Transactions</h3><a href="#" onclick="showSection('transactions')">View All</a></div>
+          <table class="data-table" id="recentTxTable">
+            <thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody id="recentTxBody"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">No transactions yet</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- WALLET -->
+      <div class="section-tab" id="tab-wallet">
+        <div style="max-width:600px">
+          <div class="wallet-balance-card">
+            <div class="wallet-label">Available Balance</div>
+            <div class="wallet-amount" id="walletBalW">$0.00</div>
+            <div class="wallet-currency">USD · Capitex Wallet</div>
+            <div class="wallet-actions">
+              <button class="wallet-btn" onclick="openDeposit()">+ Deposit</button>
+              <button class="wallet-btn" onclick="openWithdraw()">↗ Withdraw</button>
+            </div>
+          </div>
+          <div class="dash-card" style="margin-top:1.25rem">
+            <div class="dash-card-header"><h3>Transaction History</h3></div>
+            <table class="data-table">
+              <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody id="walletTxBody"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">No transactions yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO -->
+      <div class="section-tab" id="tab-portfolio">
+        <div class="dash-card" style="margin-bottom:1.5rem">
+          <div class="dash-card-header"><h3>Active Plan Details</h3></div>
+          <div id="portfolioContent" style="color:var(--muted);font-size:.9rem">Loading portfolio…</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Asset Allocation</h3></div>
+          <div style="display:flex;flex-direction:column;gap:.9rem;max-width:500px">
+            <div><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.3rem"><span>Equities</span><span id="pAllocEq" style="font-weight:700;color:var(--navy)">—</span></div><div class="progress-bar"><div class="progress-fill" id="pBarEq" style="width:0%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.3rem"><span>Real Estate (REITs)</span><span id="pAllocRe" style="font-weight:700;color:var(--navy)">—</span></div><div class="progress-bar"><div class="progress-fill" id="pBarRe" style="width:0%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.3rem"><span>Bonds</span><span id="pAllocBo" style="font-weight:700;color:var(--navy)">—</span></div><div class="progress-bar"><div class="progress-fill" id="pBarBo" style="width:0%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.3rem"><span>Commodities</span><span id="pAllocCo" style="font-weight:700;color:var(--navy)">—</span></div><div class="progress-bar"><div class="progress-fill" id="pBarCo" style="width:0%"></div></div></div>
+            <div id="pAllocPERow" style="display:none"><div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.3rem"><span>Private Equity</span><span id="pAllocPE" style="font-weight:700;color:var(--navy)">—</span></div><div class="progress-bar"><div class="progress-fill" id="pBarPE" style="width:0%"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSACTIONS -->
+      <div class="section-tab" id="tab-transactions">
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>All Transactions</h3></div>
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody id="allTxBody"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:1.5rem">No transactions yet</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PLANS -->
+      <div class="section-tab" id="tab-plans">
+        <div class="dash-card" style="margin-bottom:1.5rem">
+          <div class="dash-card-header"><h3>Available Investment Plans</h3></div>
+          <p style="font-size:.87rem;color:var(--muted);margin-bottom:1.25rem">Upgrade or switch plans. Enrollment deducts from your wallet balance.</p>
+          <div class="plan-cards-grid">
+            <div class="plan-card-dash" id="pc-starter">
+              <div class="pcd-name">Starter</div>
+              <div class="pcd-amount">$250</div>
+              <div class="pcd-return">5% / month</div>
+              <button class="pcd-btn" onclick="enrollPlan('starter',250)">Enroll</button>
+            </div>
+            <div class="plan-card-dash" id="pc-basic">
+              <div class="pcd-name">Basic</div>
+              <div class="pcd-amount">$500</div>
+              <div class="pcd-return">7% / month</div>
+              <button class="pcd-btn" onclick="enrollPlan('basic',500)">Enroll</button>
+            </div>
+            <div class="plan-card-dash" id="pc-standard">
+              <div class="pcd-name">Standard</div>
+              <div class="pcd-amount">$1,500</div>
+              <div class="pcd-return">10% / month</div>
+              <button class="pcd-btn" onclick="enrollPlan('standard',1500)">Enroll</button>
+            </div>
+            <div class="plan-card-dash" id="pc-premium">
+              <div class="pcd-name">Premium</div>
+              <div class="pcd-amount">$5,000</div>
+              <div class="pcd-return">14% / month</div>
+              <button class="pcd-btn" onclick="enrollPlan('premium',5000)">Enroll</button>
+            </div>
+            <div class="plan-card-dash" id="pc-elite">
+              <div class="pcd-name">Elite</div>
+              <div class="pcd-amount">$15,000</div>
+              <div class="pcd-return">19% / month</div>
+              <button class="pcd-btn" onclick="enrollPlan('elite',15000)">Enroll</button>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.75rem;color:var(--muted)">Returns are estimates. See full <a href="investments.html" style="color:var(--gold)">plan details</a> before enrolling. Capital is at risk.</p>
+      </div>
+
+      <!-- REFERRALS -->
+      <div class="section-tab" id="tab-referrals">
+        <div class="dash-card" style="max-width:600px">
+          <div class="dash-card-header"><h3>Referral Program</h3></div>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem">Earn a bonus for every investor you refer who makes their first deposit. Share your unique link below.</p>
+          <p style="font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:.5rem">Your Referral Link</p>
+          <div class="ref-box">
+            <code id="refLink">Loading…</code>
+            <button class="btn btn-outline btn-sm" id="copyRefBtn">Copy</button>
+          </div>
+          <p style="font-size:.78rem;color:var(--muted);margin-top:1rem">Bonus is credited to your wallet once the referred investor completes their first deposit of $250 or more.</p>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="section-tab" id="tab-settings">
+        <div class="dash-card" style="max-width:560px">
+          <div class="dash-card-header"><h3>Profile Settings</h3></div>
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div class="form-group"><label>First Name</label><input type="text" id="setFirstName"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" id="setLastName"/></div>
+            <div class="form-group"><label>Phone</label><input type="tel" id="setPhone"/></div>
+            <div class="form-group"><label>Country</label>
+              <select id="setCountry">
+                <option value="US">🇺🇸 United States</option><option value="GB">🇬🇧 United Kingdom</option>
+                <option value="NG">🇳🇬 Nigeria</option><option value="GH">🇬🇭 Ghana</option>
+                <option value="KE">🇰🇪 Kenya</option><option value="ZA">🇿🇦 South Africa</option>
+                <option value="CA">🇨🇦 Canada</option><option value="AU">🇦🇺 Australia</option>
+                <option value="ZZ">🌍 Other</option>
+              </select>
+            </div>
+            <button class="btn btn-gold" id="saveSettingsBtn">Save Changes</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- DEPOSIT MODAL -->
+<div class="modal-backdrop" id="depositModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Deposit Funds</h3><button class="modal-close" onclick="closeModal('depositModal')">✕</button></div>
+    <div class="pay-tabs">
+      <button class="pay-tab active" onclick="switchPayTab(this,'bank')">Bank Transfer</button>
+      <button class="pay-tab" onclick="switchPayTab(this,'wire')">Wire / SWIFT</button>
+      <button class="pay-tab" onclick="switchPayTab(this,'paypal')">PayPal</button>
+      <button class="pay-tab" onclick="switchPayTab(this,'wise')">Wise</button>
+    </div>
+    <div class="pay-content active" id="pay-bank">
+      <div class="pay-info-box">
+        <strong>Bank Transfer (ACH/Local)</strong><br/>
+        Account Name: <strong>Capitex Finance Ltd</strong><br/>
+        Bank: <strong>First National Bank</strong><br/>
+        Account No: <strong>0012345678</strong><br/>
+        Routing No: <strong>021000021</strong><br/>
+        Reference: <strong id="refCode">CAP-XXXX</strong>
+      </div>
+    </div>
+    <div class="pay-content" id="pay-wire">
+      <div class="pay-info-box">
+        <strong>International Wire / SWIFT</strong><br/>
+        Beneficiary: <strong>Capitex Finance Ltd</strong><br/>
+        Bank: <strong>Citibank NA</strong><br/>
+        SWIFT: <strong>CITIUS33</strong><br/>
+        IBAN: <strong>US12 CITI 0001 0012 3456 78</strong><br/>
+        Reference: <span id="refCode2">CAP-XXXX</span>
+      </div>
+    </div>
+    <div class="pay-content" id="pay-paypal">
+      <div class="pay-info-box">
+        <strong>PayPal</strong><br/>
+        Send payment to: <strong>payments@capitex.finance</strong><br/>
+        Select "Friends &amp; Family" to avoid fees.<br/>
+        Include your account email in the PayPal note.
+      </div>
+    </div>
+    <div class="pay-content" id="pay-wise">
+      <div class="pay-info-box">
+        <strong>Wise (TransferWise)</strong><br/>
+        Email: <strong>payments@capitex.finance</strong><br/>
+        Currency: <strong>USD</strong><br/>
+        Include your registered email in the reference so we can credit your account.
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:1rem"><label>Amount You're Sending (USD)</label><input type="number" id="depositAmount" placeholder="250" min="250"/></div>
+    <button class="btn btn-gold btn-full" style="margin-top:.75rem" onclick="submitDeposit()">I've Made the Transfer</button>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem">After confirming payment, your balance will be credited within 1–24 hours once our team verifies the transfer.</p>
+  </div>
+</div>
+
+<!-- WITHDRAW MODAL -->
+<div class="modal-backdrop" id="withdrawModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Request Withdrawal</h3><button class="modal-close" onclick="closeModal('withdrawModal')">✕</button></div>
+    <div class="form-group"><label>Amount (USD)</label><input type="number" id="withdrawAmount" placeholder="Minimum $50" min="50"/></div>
+    <div class="form-group"><label>Payment Method</label>
+      <select id="withdrawMethod">
+        <option>Bank Transfer</option><option>PayPal</option><option>Wise</option><option>Wire / SWIFT</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Account / Wallet Details</label><input type="text" id="withdrawDetails" placeholder="Bank account number, PayPal email, etc."/></div>
+    <button class="btn btn-gold btn-full" style="margin-top:.75rem" onclick="submitWithdraw()">Submit Withdrawal Request</button>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem">Withdrawals are processed within 24–72 hours depending on your plan tier.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getDatabase, ref, get, set, update, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const app = initializeApp({
+  apiKey:"AIzaSyDqpisHE31KO0wEN3gQwWOYZPHpgUCVIGs",
+  authDomain:"vaultora-site.firebaseapp.com",
+  databaseURL:"https://vaultora-site-default-rtdb.firebaseio.com",
+  projectId:"vaultora-site",
+  storageBucket:"vaultora-site.firebasestorage.app",
+  messagingSenderId:"45703389328",
+  appId:"1:45703389328:web:d4c833fa32792eb8017815"
+});
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+let currentUser = null;
+let userData = null;
+
+const PLAN_DATA = {
+  starter:  { rate:0.05, eq:60, re:0,  bo:40, co:0,  pe:0 },
+  basic:    { rate:0.07, eq:55, re:15, bo:30, co:0,  pe:0 },
+  standard: { rate:0.10, eq:40, re:20, bo:25, co:15, pe:0 },
+  premium:  { rate:0.14, eq:35, re:20, bo:20, co:15, pe:10 },
+  elite:    { rate:0.19, eq:30, re:20, bo:15, co:15, pe:20 }
+};
+
+function fmt(n) { return '$' + Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function toast(msg) {
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+onAuthStateChanged(auth, async user => {
+  if (!user) { location.href='login.html'; return; }
+  currentUser = user;
+  const snap = await get(ref(db,`users/${user.uid}`));
+  if (!snap.exists()) { location.href='login.html'; return; }
+  userData = snap.val();
+
+  // Populate UI
+  const initials = ((userData.firstName||'?')[0]+(userData.lastName||'')[0]||'?').toUpperCase();
+  document.getElementById('sidebarAvatar').textContent = initials;
+  document.getElementById('sidebarName').textContent = `${userData.firstName} ${userData.lastName}`;
+
+  document.getElementById('walletBal').textContent = fmt(userData.walletBalance);
+  document.getElementById('walletBalW').textContent = fmt(userData.walletBalance);
+  document.getElementById('totalInvested').textContent = fmt(userData.totalInvested);
+  document.getElementById('totalReturns').textContent = fmt(userData.totalReturns);
+
+  const plan = userData.selectedPlan || 'starter';
+  document.getElementById('activePlan').textContent = plan.charAt(0).toUpperCase()+plan.slice(1);
+  document.getElementById('pc-'+plan)?.classList.add('active-plan');
+
+  // Allocation bars
+  const pd = PLAN_DATA[plan] || PLAN_DATA.starter;
+  ['Equity','Reits','Bonds','Comm'].forEach(k=>{
+    const map={Equity:'eq',Reits:'re',Bonds:'bo',Comm:'co'};
+    const v=pd[map[k]];
+    document.getElementById('alloc'+k).textContent=v+'%';
+    document.getElementById('bar'+k).style.width=v+'%';
+    document.getElementById('pAlloc'+k.slice(0,2).toUpperCase()+k.slice(2,4))?.textContent&&(document.getElementById('pAlloc'+k.slice(0,2)+k[2]).textContent=v+'%');
+  });
+  ['Eq','Re','Bo','Co'].forEach(k=>{
+    const map={Eq:'eq',Re:'re',Bo:'bo',Co:'co'};
+    const el=document.getElementById('pBar'+k);
+    if(el) el.style.width=(pd[map[k]])+'%';
+    const lel=document.getElementById('pAlloc'+k);
+    if(lel) lel.textContent=(pd[map[k]])+'%';
+  });
+  if(pd.pe>0){
+    document.getElementById('pAllocPERow').style.display='block';
+    document.getElementById('pAllocPE').textContent=pd.pe+'%';
+    document.getElementById('pBarPE').style.width=pd.pe+'%';
+  }
+
+  // Portfolio content
+  document.getElementById('portfolioContent').innerHTML=`
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem">
+      <div style="background:var(--cream);border-radius:8px;padding:1rem"><div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600">Plan</div><div style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-top:.25rem;text-transform:capitalize">${plan}</div></div>
+      <div style="background:var(--cream);border-radius:8px;padding:1rem"><div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600">Monthly Rate</div><div style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-top:.25rem">${(pd.rate*100).toFixed(0)}%</div></div>
+      <div style="background:var(--cream);border-radius:8px;padding:1rem"><div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600">Est. Monthly Return</div><div style="font-size:1.1rem;font-weight:700;color:var(--gold);margin-top:.25rem">${fmt((userData.totalInvested||0)*pd.rate)}</div></div>
+    </div>`;
+
+  // Referral link
+  const refLink=`https://capitex.finance/pages/signup.html?ref=${user.uid.slice(0,8)}`;
+  document.getElementById('refLink').textContent=refLink;
+  document.getElementById('refCode').textContent='CAP-'+user.uid.slice(0,6).toUpperCase();
+  document.getElementById('refCode2').textContent='CAP-'+user.uid.slice(0,6).toUpperCase();
+
+  // Settings
+  document.getElementById('setFirstName').value=userData.firstName||'';
+  document.getElementById('setLastName').value=userData.lastName||'';
+  document.getElementById('setPhone').value=userData.phone||'';
+  document.getElementById('setCountry').value=userData.country||'US';
+
+  // Transactions
+  onValue(ref(db,`users/${user.uid}/transactions`), snap=>{
+    const txs=[];
+    snap.forEach(c=>txs.push({id:c.key,...c.val()}));
+    txs.sort((a,b)=>b.date-a.date);
+    renderTxTable('recentTxBody', txs.slice(0,5), false);
+    renderTxTable('walletTxBody', txs, false);
+    renderTxTable('allTxBody', txs, true);
+  });
+});
+
+function renderTxTable(id, txs, full) {
+  const tbody=document.getElementById(id);
+  if(!txs.length){ tbody.innerHTML=`<tr><td colspan="${full?5:4}" style="text-align:center;color:var(--muted);padding:1.5rem">No transactions yet</td></tr>`; return; }
+  tbody.innerHTML=txs.map(t=>{
+    const d=new Date(t.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const badge=t.status==='approved'?'badge-green':t.status==='pending'?'badge-orange':'badge-red';
+    return `<tr>
+      <td>${d}</td>
+      ${full?`<td>${t.type||'—'}</td>`:''}
+      <td>${t.description||'—'}</td>
+      <td style="font-weight:700">${t.amount<0?'-':''}${fmt(Math.abs(t.amount))}</td>
+      <td><span class="badge ${badge}">${t.status}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// Logout
+document.getElementById('logoutLink').addEventListener('click', async e=>{
+  e.preventDefault();
+  await signOut(auth);
+  location.href='login.html';
+});
+
+// Copy ref
+document.getElementById('copyRefBtn').addEventListener('click',()=>{
+  navigator.clipboard.writeText(document.getElementById('refLink').textContent);
+  toast('Referral link copied!');
+});
+
+// Save settings
+document.getElementById('saveSettingsBtn').addEventListener('click', async()=>{
+  await update(ref(db,`users/${currentUser.uid}`),{
+    firstName:document.getElementById('setFirstName').value,
+    lastName:document.getElementById('setLastName').value,
+    phone:document.getElementById('setPhone').value,
+    country:document.getElementById('setCountry').value
+  });
+  toast('Settings saved!');
+});
+
+// Enroll plan
+window.enrollPlan=async(plan,minAmount)=>{
+  const bal=userData?.walletBalance||0;
+  if(bal<minAmount){toast(`Insufficient balance. Deposit at least $${minAmount} to enroll.`);return;}
+  const newBal=bal-minAmount;
+  await update(ref(db,`users/${currentUser.uid}`),{selectedPlan:plan,totalInvested:minAmount,walletBalance:newBal});
+  await push(ref(db,`users/${currentUser.uid}/transactions`),{type:'enrollment',description:`Enrolled in ${plan} plan`,amount:-minAmount,status:'approved',date:Date.now()});
+  toast(`Enrolled in ${plan.charAt(0).toUpperCase()+plan.slice(1)} plan!`);
+  location.reload();
+};
+
+// Deposit
+window.openDeposit=()=>document.getElementById('depositModal').classList.add('open');
+window.closeModal=id=>document.getElementById(id).classList.remove('open');
+window.switchPayTab=(btn,tab)=>{
+  document.querySelectorAll('.pay-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.pay-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pay-'+tab).classList.add('active');
+};
+window.submitDeposit=async()=>{
+  const amount=parseFloat(document.getElementById('depositAmount').value);
+  if(!amount||amount<250){toast('Minimum deposit is $250.');return;}
+  await push(ref(db,`deposits/${currentUser.uid}`),{uid:currentUser.uid,amount,status:'pending',date:Date.now()});
+  await push(ref(db,`users/${currentUser.uid}/transactions`),{type:'deposit',description:'Deposit submitted — pending verification',amount,status:'pending',date:Date.now()});
+  toast('Deposit request submitted! Balance credited after verification.');
+  closeModal('depositModal');
+};
+
+// Withdraw
+window.openWithdraw=()=>document.getElementById('withdrawModal').classList.add('open');
+window.submitWithdraw=async()=>{
+  const amount=parseFloat(document.getElementById('withdrawAmount').value);
+  const bal=userData?.walletBalance||0;
+  if(!amount||amount<50){toast('Minimum withdrawal is $50.');return;}
+  if(amount>bal){toast('Insufficient wallet balance.');return;}
+  const method=document.getElementById('withdrawMethod').value;
+  const details=document.getElementById('withdrawDetails').value;
+  await push(ref(db,`withdrawals/${currentUser.uid}`),{uid:currentUser.uid,amount,method,details,status:'pending',date:Date.now()});
+  await push(ref(db,`users/${currentUser.uid}/transactions`),{type:'withdrawal',description:`Withdrawal via ${method}`,amount:-amount,status:'pending',date:Date.now()});
+  toast('Withdrawal request submitted! Processing within 24–72 hours.');
+  closeModal('withdrawModal');
+};
+
+// Section navigation
+window.showSection=function(section) {
+  document.querySelectorAll('.section-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sidebar-nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('tab-'+section)?.classList.add('active');
+  const link=document.querySelector(`.sidebar-nav a[data-section="${section}"]`);
+  if(link) link.classList.add('active');
+  document.getElementById('topbarTitle').textContent=link?.textContent.trim()||'Dashboard';
+};
+document.querySelectorAll('.sidebar-nav a[data-section]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();showSection(a.dataset.section);});
+});
+</script>
+</body>
+</html>

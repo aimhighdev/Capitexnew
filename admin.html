@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Panel — Capitex</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%230D3D2F'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='22' font-weight='bold' fill='%23C9A84C'>C</text></svg>">
+<link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+<div class="dash-layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="brand-name">Capit<span style="color:var(--gold)">ex</span> <span style="font-size:.7rem;color:var(--gold);font-family:'Outfit',sans-serif;">ADMIN</span></div></div>
+    <nav class="sidebar-nav">
+      <p class="nav-section-label">Management</p>
+      <button class="nav-item active" data-section="overview"><span class="nav-icon">📊</span>Overview</button>
+      <button class="nav-item" data-section="users"><span class="nav-icon">👥</span>All Users</button>
+      <button class="nav-item" data-section="deposits"><span class="nav-icon">📥</span>Deposits</button>
+      <button class="nav-item" data-section="withdrawals"><span class="nav-icon">📤</span>Withdrawals</button>
+      <button class="nav-item" data-section="investments"><span class="nav-icon">📈</span>Investments</button>
+      <p class="nav-section-label">Tools</p>
+      <button class="nav-item" data-section="broadcast"><span class="nav-icon">📢</span>Broadcast</button>
+      <button class="nav-item" data-section="settings"><span class="nav-icon">⚙️</span>Settings</button>
+      <button class="nav-item" id="logoutBtn" style="margin-top:1rem;color:rgba(255,100,100,.7);"><span class="nav-icon">🚪</span>Sign Out</button>
+    </nav>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-topbar">
+      <h1 id="pageTitle">Admin Overview</h1>
+      <div class="topbar-actions">
+        <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
+      </div>
+    </div>
+    <div class="dash-content">
+
+      <!-- OVERVIEW -->
+      <div id="section-overview">
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-card-icon green">👥</div><div class="stat-card-val" id="totalUsers">0</div><div class="stat-card-label">Total Users</div></div>
+          <div class="stat-card"><div class="stat-card-icon gold">💰</div><div class="stat-card-val" id="totalDeposits">$0</div><div class="stat-card-label">Total Deposits</div></div>
+          <div class="stat-card"><div class="stat-card-icon blue">⏳</div><div class="stat-card-val" id="pendingDeposits">0</div><div class="stat-card-label">Pending Deposits</div></div>
+          <div class="stat-card"><div class="stat-card-icon purple">📈</div><div class="stat-card-val" id="activeInvestors">0</div><div class="stat-card-label">Active Investors</div></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Recent User Registrations</h3></div>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Country</th><th>Joined</th><th>Action</th></tr></thead>
+            <tbody id="recentUsersBody"><tr><td colspan="6" style="text-align:center;color:var(--text-light);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div id="section-users" style="display:none;">
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>All Users</h3><input type="text" id="userSearch" placeholder="Search by name or email…" style="padding:.5rem .9rem;border:1.5px solid var(--cream-dark);border-radius:50px;font-size:.85rem;width:240px;"></div>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Balance</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="allUsersBody"><tr><td colspan="6" style="text-align:center;color:var(--text-light);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DEPOSITS -->
+      <div id="section-deposits" style="display:none;">
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Deposit Requests</h3></div>
+          <div style="display:flex;gap:.5rem;margin-bottom:1rem;">
+            <button class="method-tab active" onclick="filterDeposits('pending',this)">Pending</button>
+            <button class="method-tab" onclick="filterDeposits('approved',this)">Approved</button>
+            <button class="method-tab" onclick="filterDeposits('rejected',this)">Rejected</button>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>User</th><th>Amount</th><th>Reference</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="depositsBody"><tr><td colspan="6" style="text-align:center;color:var(--text-light);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- WITHDRAWALS -->
+      <div id="section-withdrawals" style="display:none;">
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Withdrawal Requests</h3></div>
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>User</th><th>Amount</th><th>Method</th><th>Account</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="withdrawalsBody"><tr><td colspan="7" style="text-align:center;color:var(--text-light);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- INVESTMENTS -->
+      <div id="section-investments" style="display:none;">
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Active Investors by Plan</h3></div>
+          <table class="data-table">
+            <thead><tr><th>User</th><th>Email</th><th>Plan</th><th>Total Invested</th><th>Returns</th><th>Action</th></tr></thead>
+            <tbody id="investmentsBody"><tr><td colspan="6" style="text-align:center;color:var(--text-light);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- BROADCAST -->
+      <div id="section-broadcast" style="display:none;">
+        <div class="dash-card" style="max-width:600px;">
+          <div class="dash-card-header"><h3>Broadcast Message</h3></div>
+          <p style="font-size:.875rem;color:var(--text-mid);margin-bottom:1.25rem;">Send a notification to all users. Messages are saved to the database and shown in dashboards.</p>
+          <div class="form-group"><label>Message Title</label><input type="text" id="broadcastTitle" placeholder="e.g. System Maintenance Notice"></div>
+          <div class="form-group"><label>Message Body</label><textarea id="broadcastBody" rows="4" placeholder="Write your message here…" style="width:100%;padding:.75rem;border:1.5px solid var(--cream-dark);border-radius:8px;font-family:'Outfit',sans-serif;"></textarea></div>
+          <button class="btn btn-primary btn-sm" onclick="sendBroadcast()">Send to All Users</button>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div id="section-settings" style="display:none;">
+        <div class="dash-card" style="max-width:560px;">
+          <div class="dash-card-header"><h3>Credit User Wallet</h3></div>
+          <p style="font-size:.875rem;color:var(--text-mid);margin-bottom:1.25rem;">Manually credit a user's wallet balance and create a transaction record.</p>
+          <div class="form-group"><label>User UID</label><input type="text" id="creditUid" placeholder="Firebase user UID"></div>
+          <div class="form-group"><label>Amount (USD)</label><input type="number" id="creditAmount" placeholder="e.g. 500"></div>
+          <div class="form-group"><label>Note</label><input type="text" id="creditNote" placeholder="e.g. Return payment Q1 2025"></div>
+          <button class="btn btn-success btn-sm" onclick="creditWallet()">Credit Wallet</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getDatabase, ref, onValue, get, update, push, set } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDqpisHE31KO0wEN3gQwWOYZPHpgUCVIGs",
+  authDomain: "vaultora-site.firebaseapp.com",
+  databaseURL: "https://vaultora-site-default-rtdb.firebaseio.com",
+  projectId: "vaultora-site",
+  storageBucket: "vaultora-site.firebasestorage.app",
+  messagingSenderId: "45703389328",
+  appId: "1:45703389328:web:d4c833fa32792eb8017815"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+let allUsers = {};
+function fmt(n){return '$'+(+n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+onAuthStateChanged(auth, async user => {
+  if (!user) { location.href='admin-login.html'; return; }
+  const snap = await get(ref(db,'users/'+user.uid));
+  if (snap.val()?.role !== 'admin') { location.href='dashboard.html'; return; }
+  loadAllData();
+});
+
+function loadAllData() {
+  onValue(ref(db,'users'), snap => {
+    allUsers = snap.val() || {};
+    renderOverview();
+    renderUsers(allUsers);
+    renderDeposits('pending');
+    renderWithdrawals();
+    renderInvestments();
+  });
+}
+
+function renderOverview() {
+  const users = Object.entries(allUsers);
+  document.getElementById('totalUsers').textContent = users.length;
+  let totalDep = 0, pending = 0, activeInv = 0;
+  users.forEach(([uid,u]) => {
+    if (u.selectedPlan && u.totalInvested > 0) activeInv++;
+    const txs = u.transactions ? Object.values(u.transactions) : [];
+    txs.forEach(t => {
+      if (t.type==='deposit' && t.status==='approved') totalDep += t.amount;
+      if (t.type==='deposit' && t.status==='pending') pending++;
+    });
+  });
+  document.getElementById('totalDeposits').textContent = fmt(totalDep);
+  document.getElementById('pendingDeposits').textContent = pending;
+  document.getElementById('activeInvestors').textContent = activeInv;
+  const recent = users.sort((a,b)=>(b[1].joinedAt||0)-(a[1].joinedAt||0)).slice(0,10);
+  document.getElementById('recentUsersBody').innerHTML = recent.map(([uid,u])=>`
+    <tr><td>${u.firstName||''} ${u.lastName||''}</td><td>${u.email||''}</td><td><span class="badge badge-info">${u.selectedPlan||'—'}</span></td><td>${u.country||'—'}</td><td>${u.joinedAt?new Date(u.joinedAt).toLocaleDateString():'—'}</td>
+    <td><button class="btn btn-outline btn-sm" onclick="viewUser('${uid}')">View</button></td></tr>`).join('');
+}
+
+function renderUsers(users) {
+  const rows = Object.entries(users);
+  document.getElementById('allUsersBody').innerHTML = rows.map(([uid,u])=>`
+    <tr><td>${u.firstName||''} ${u.lastName||''}</td><td>${u.email||''}</td><td>${u.selectedPlan||'—'}</td><td>${fmt(u.walletBalance)}</td>
+    <td><span class="badge badge-${u.status==='active'?'success':'danger'}">${u.status||'active'}</span></td>
+    <td style="display:flex;gap:.4rem;">
+      <button class="btn btn-outline btn-sm" onclick="toggleSuspend('${uid}','${u.status||'active'}')">
+        ${u.status==='suspended'?'Restore':'Suspend'}
+      </button>
+    </td></tr>`).join('');
+}
+
+window.currentDepositFilter = 'pending';
+function renderDeposits(status) {
+  window.currentDepositFilter = status;
+  const rows = [];
+  Object.entries(allUsers).forEach(([uid,u]) => {
+    const txs = u.transactions ? Object.entries(u.transactions) : [];
+    txs.forEach(([txId,t]) => {
+      if (t.type==='deposit' && (!status || t.status===status)) {
+        rows.push({ uid, txId, user:`${u.firstName||''} ${u.lastName||''} (${u.email||''})`, ...t });
+      }
+    });
+  });
+  rows.sort((a,b)=>(b.date||0)-(a.date||0));
+  document.getElementById('depositsBody').innerHTML = rows.length ? rows.map(r=>`
+    <tr><td>${new Date(r.date||0).toLocaleDateString()}</td><td>${r.user}</td><td>${fmt(r.amount)}</td><td>${r.reference||'—'}</td>
+    <td><span class="badge badge-${r.status==='approved'?'success':r.status==='pending'?'warning':'danger'}">${r.status}</span></td>
+    <td style="display:flex;gap:.4rem;">
+      ${r.status==='pending'?`<button class="btn btn-success btn-sm" onclick="approveDeposit('${r.uid}','${r.txId}',${r.amount})">Approve</button><button class="btn btn-danger btn-sm" onclick="rejectDeposit('${r.uid}','${r.txId}')">Reject</button>`:'—'}
+    </td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text-light);">No deposits found</td></tr>';
+}
+
+function renderWithdrawals() {
+  const rows = [];
+  Object.entries(allUsers).forEach(([uid,u]) => {
+    const txs = u.transactions ? Object.entries(u.transactions) : [];
+    txs.forEach(([txId,t]) => {
+      if (t.type==='withdrawal') rows.push({uid,txId,user:`${u.firstName||''} (${u.email||''})`, ...t});
+    });
+  });
+  document.getElementById('withdrawalsBody').innerHTML = rows.length ? rows.map(r=>`
+    <tr><td>${new Date(r.date||0).toLocaleDateString()}</td><td>${r.user}</td><td>${fmt(r.amount)}</td><td>${r.method||'—'}</td><td>${r.account||'—'}</td>
+    <td><span class="badge badge-${r.status==='approved'?'success':r.status==='pending'?'warning':'danger'}">${r.status}</span></td>
+    <td>${r.status==='pending'?`<button class="btn btn-success btn-sm" onclick="approveWithdrawal('${r.uid}','${r.txId}',${r.amount})">Approve</button>`:'—'}</td></tr>`).join('') : '<tr><td colspan="7" style="text-align:center;color:var(--text-light);">No withdrawals found</td></tr>';
+}
+
+function renderInvestments() {
+  const rows = Object.entries(allUsers).filter(([,u])=>u.totalInvested>0);
+  document.getElementById('investmentsBody').innerHTML = rows.length ? rows.map(([uid,u])=>`
+    <tr><td>${u.firstName||''} ${u.lastName||''}</td><td>${u.email||''}</td>
+    <td><span class="badge badge-info">${u.selectedPlan||'—'}</span></td>
+    <td>${fmt(u.totalInvested)}</td><td>${fmt(u.totalReturns)}</td>
+    <td><button class="btn btn-outline btn-sm" onclick="creditDialog('${uid}')">Credit Return</button></td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;color:var(--text-light);">No active investments</td></tr>';
+}
+
+window.approveDeposit = async (uid, txId, amount) => {
+  if (!confirm(`Approve deposit of ${fmt(amount)}?`)) return;
+  const u = allUsers[uid];
+  await update(ref(db,'users/'+uid), { walletBalance: (u.walletBalance||0) + amount });
+  await update(ref(db,`users/${uid}/transactions/${txId}`), { status:'approved' });
+  showToast('Deposit approved and wallet credited!');
+};
+
+window.rejectDeposit = async (uid, txId) => {
+  await update(ref(db,`users/${uid}/transactions/${txId}`), { status:'rejected' });
+  showToast('Deposit rejected.');
+};
+
+window.approveWithdrawal = async (uid, txId, amount) => {
+  if (!confirm(`Approve withdrawal of ${fmt(amount)}?`)) return;
+  const u = allUsers[uid];
+  const newBal = Math.max(0, (u.walletBalance||0) - amount);
+  await update(ref(db,'users/'+uid), { walletBalance: newBal, totalWithdrawn:(u.totalWithdrawn||0)+amount });
+  await update(ref(db,`users/${uid}/transactions/${txId}`), { status:'approved' });
+  showToast('Withdrawal approved!');
+};
+
+window.toggleSuspend = async (uid, status) => {
+  const newStatus = status === 'suspended' ? 'active' : 'suspended';
+  await update(ref(db,'users/'+uid), { status: newStatus });
+  showToast(`User ${newStatus}.`);
+};
+
+window.creditDialog = (uid) => {
+  document.getElementById('creditUid').value = uid;
+  showSection('settings');
+};
+
+window.creditWallet = async () => {
+  const uid = document.getElementById('creditUid').value.trim();
+  const amount = +document.getElementById('creditAmount').value;
+  const note = document.getElementById('creditNote').value.trim();
+  if (!uid || !amount) return showToast('Fill all fields.');
+  const snap = await get(ref(db,'users/'+uid));
+  const u = snap.val();
+  if (!u) return showToast('User not found.');
+  await update(ref(db,'users/'+uid), { walletBalance:(u.walletBalance||0)+amount, totalReturns:(u.totalReturns||0)+amount });
+  const txRef = push(ref(db,'users/'+uid+'/transactions'));
+  await update(txRef, { type:'credit', amount, note, status:'approved', date:Date.now() });
+  showToast('Wallet credited successfully!');
+};
+
+window.sendBroadcast = async () => {
+  const title = document.getElementById('broadcastTitle').value.trim();
+  const body = document.getElementById('broadcastBody').value.trim();
+  if (!title || !body) return showToast('Enter both title and body.');
+  await push(ref(db,'broadcasts'), { title, body, date:Date.now() });
+  showToast('Broadcast sent to all users!');
+  document.getElementById('broadcastTitle').value=''; document.getElementById('broadcastBody').value='';
+};
+
+window.filterDeposits = (status, el) => {
+  document.querySelectorAll('.method-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderDeposits(status);
+};
+
+window.exportCSV = () => {
+  const rows = [['UID','Name','Email','Plan','Balance','Invested','Country','Status']];
+  Object.entries(allUsers).forEach(([uid,u]) => rows.push([uid,`${u.firstName||''} ${u.lastName||''}`,u.email||'',u.selectedPlan||'',u.walletBalance||0,u.totalInvested||0,u.country||'',u.status||'active']));
+  const csv = rows.map(r=>r.join(',')).join('\n');
+  const a = document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='capitex-users.csv'; a.click();
+};
+
+window.viewUser = (uid) => alert('User UID: '+uid+'\nUse the Credit Wallet tool in Settings to credit this user.');
+
+document.querySelectorAll('.nav-item[data-section]').forEach(btn => {
+  btn.addEventListener('click', () => showSection(btn.dataset.section));
+});
+
+window.showSection = (s) => {
+  document.querySelectorAll('[id^="section-"]').forEach(el=>el.style.display='none');
+  const sec = document.getElementById('section-'+s);
+  if (sec) sec.style.display='';
+  document.getElementById('pageTitle').textContent = s.charAt(0).toUpperCase()+s.slice(1);
+  document.querySelectorAll('.nav-item[data-section]').forEach(b=>b.classList.toggle('active',b.dataset.section===s));
+};
+
+document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth).then(()=>location.href='admin-login.html'));
+document.getElementById('userSearch').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase();
+  const filtered = Object.fromEntries(Object.entries(allUsers).filter(([,u])=>`${u.firstName} ${u.lastName} ${u.email}`.toLowerCase().includes(q)));
+  renderUsers(filtered);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Capitex</title>
+  <meta name="description" content="Capitex is a professionally managed investment platform built to make structured wealth-building accessible from $250."/>
+  <meta property="og:title" content="About Capitex — Our Mission & Team"/>
+  <meta property="og:url" content="https://capitex.finance/pages/about.html"/>
+  <link rel="canonical" href="https://capitex.finance/pages/about.html"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+    .team-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);overflow:hidden;transition:all var(--tr)}
+    .team-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--border)}
+    .team-img{width:100%;height:220px;object-fit:cover;object-position:top}
+    .team-body{padding:1.4rem}
+    .team-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:.2rem}
+    .team-role{font-size:.8rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.07em}
+    .team-bio{font-size:.85rem;color:var(--muted);margin-top:.6rem;line-height:1.6}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .value-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:1.75rem;transition:all var(--tr)}
+    .value-card:hover{border-color:var(--border);box-shadow:var(--shadow)}
+    .value-icon{font-size:1.75rem;margin-bottom:.9rem}
+    .value-card h3{color:var(--navy);font-size:1rem;margin-bottom:.4rem}
+    .value-card p{color:var(--muted);font-size:.86rem;line-height:1.6}
+    @media(max-width:768px){.about-grid,.team-grid,.values-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" role="dialog">
+  <button class="menu-panel-close" id="menuClose">✕</button>
+  <a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a>
+  <nav><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About Us</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a><a href="eligibility.html">Check Eligibility</a><a href="careers.html">Careers</a></nav>
+  <div class="menu-panel-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div>
+</aside>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a>
+    <div class="nav-links"><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a></div>
+    <div class="nav-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="page-header">
+    <span class="section-label">Our Story</span>
+    <h1>Built to Bridge the Wealth Gap</h1>
+    <p>Capitex was founded on a simple conviction — that professionally managed investing shouldn't require a six-figure minimum or a private banker.</p>
+  </div>
+
+  <section style="background:var(--white)">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <span class="section-label">Our Mission</span>
+          <h2 class="section-title">Structured Wealth-Building, Starting at $250</h2>
+          <p style="color:var(--muted);margin-bottom:1.25rem;line-height:1.75">Traditional portfolio management firms set minimum investments that lock out most individual investors. We built Capitex to change that — giving anyone access to the same diversified, professionally managed strategies used by institutional investors.</p>
+          <p style="color:var(--muted);margin-bottom:1.75rem;line-height:1.75">Our portfolios span equities, real estate investment trusts, sovereign and corporate bonds, and commodity positions — actively managed and rebalanced monthly by our advisory team.</p>
+          <a href="investments.html" class="btn btn-gold btn-lg">Explore Our Plans</a>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=75" alt="Professional investment team meeting" loading="lazy" style="border-radius:var(--radius);box-shadow:var(--shadow-lg);width:100%"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" style="background:var(--cream)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Our Team</span>
+        <h2 class="section-title">The People Behind Your Portfolio</h2>
+        <p class="section-sub">Our advisory team brings decades of combined experience in asset management, compliance, and financial technology.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=75" alt="Marcus Reid, Chief Investment Officer" loading="lazy" class="team-img"/>
+          <div class="team-body">
+            <div class="team-name">Marcus Reid</div>
+            <div class="team-role">Chief Investment Officer</div>
+            <p class="team-bio">22 years in institutional asset management. Former senior portfolio manager at Barclays Wealth. Leads all asset allocation decisions and portfolio strategy at Capitex.</p>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:.1s">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=75" alt="Diane Osei, Head of Client Success" loading="lazy" class="team-img"/>
+          <div class="team-body">
+            <div class="team-name">Diane Osei</div>
+            <div class="team-role">Head of Client Success</div>
+            <p class="team-bio">Investor relations specialist with 14 years of experience across Africa and Europe. Oversees all advisor relationships and investor onboarding at Capitex.</p>
+          </div>
+        </div>
+        <div class="team-card reveal" style="transition-delay:.2s">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=75" alt="Nathan Kwame, Chief Compliance Officer" loading="lazy" class="team-img"/>
+          <div class="team-body">
+            <div class="team-name">Nathan Kwame</div>
+            <div class="team-role">Chief Compliance Officer</div>
+            <p class="team-bio">Specialist in cross-border financial regulation and KYC frameworks. Ensures Capitex maintains the highest standards of compliance across all operating regions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--white)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">What We Stand For</span>
+        <h2 class="section-title">Our Core Values</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="value-icon">🔍</div><h3>Transparency</h3><p>Every investor sees exactly how their capital is allocated, where returns come from, and a full transaction history — no hidden figures.</p></div>
+        <div class="value-card reveal" style="transition-delay:.08s"><div class="value-icon">🛡️</div><h3>Security First</h3><p>KYC-verified accounts, encrypted transactions, and a rigorous compliance framework protect every dollar on our platform.</p></div>
+        <div class="value-card reveal" style="transition-delay:.16s"><div class="value-icon">📐</div><h3>Discipline</h3><p>We don't chase trends or speculative plays. Our portfolio strategy is grounded in proven long-term asset management principles.</p></div>
+        <div class="value-card reveal"><div class="value-icon">🌍</div><h3>Accessibility</h3><p>From Lagos to London to Los Angeles — Capitex serves investors in 47+ countries, with a $250 entry point that welcomes everyone.</p></div>
+        <div class="value-card reveal" style="transition-delay:.08s"><div class="value-icon">📈</div><h3>Consistency</h3><p>Our 98% on-time payout rate reflects our commitment to delivering what we promise — every month, to every investor on our platform.</p></div>
+        <div class="value-card reveal" style="transition-delay:.16s"><div class="value-icon">🤝</div><h3>Partnership</h3><p>We succeed when our investors succeed. Every plan tier is designed to grow with you — so upgrading is natural, not forced.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--navy);padding:4rem 1.5rem;text-align:center">
+    <div class="container" style="max-width:620px">
+      <span class="section-label" style="color:var(--gold2)">Ready to Start?</span>
+      <h2 style="color:var(--white);margin:.6rem 0 1rem">Join 4,800+ Investors Growing Their Wealth</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem">Open your account in under 5 minutes. No minimum term. No penalty for withdrawals.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="signup.html" class="btn btn-gold btn-lg">Open Free Account</a>
+        <a href="contact.html" class="btn btn-outline-gold btn-lg">Talk to an Advisor</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#122848"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><p>Professionally managed investment portfolios starting from $250.</p><p class="footer-disclaimer">Investment returns are estimates. Capital is at risk. Not a licensed bank.</p></div>
+    <div><h4>Plans</h4><ul><li><a href="investments.html#starter">Starter — $250</a></li><li><a href="investments.html#basic">Basic — $500</a></li><li><a href="investments.html#standard">Standard — $1,500</a></li><li><a href="investments.html#premium">Premium — $5,000</a></li><li><a href="investments.html#elite">Elite — $15,000</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partnership.html">Partnership</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="signup.html">Open Account</a></li><li><a href="login.html">Investor Login</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© <span class="year-auto">2024</span> Capitex Finance Ltd. All rights reserved.</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div>
+</footer>
+<button class="chat-fab" id="chatFab" aria-label="Open chat">💬</button>
+<div class="chat-panel" id="chatPanel"><div class="chat-hdr"><div><h4>Talk to an Advisor</h4><p>Usually replies within 2 hours</p></div><button class="chat-close" id="chatClose">✕</button></div><form class="chat-body" id="chatForm"><input type="hidden" name="_source" value="about-chat"/><input type="text" name="name" placeholder="Your name" required/><input type="email" name="email" placeholder="Email address" required/><textarea name="message" placeholder="How can we help?" rows="3" required></textarea><button type="submit" class="btn btn-gold btn-full">Send Message</button></form></div>
+<button class="to-top" aria-label="Back to top">↑</button>
+<script defer src="../assets/js/main.js"></script>
+</body>
+</html>

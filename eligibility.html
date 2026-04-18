@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Check Eligibility — Capitex</title>
+  <meta name="description" content="Find out which Capitex investment plan is right for you. 5 questions, instant results."/>
+  <link rel="canonical" href="https://capitex.finance/pages/eligibility.html"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .quiz-wrap{max-width:640px;margin:0 auto;background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:2.5rem}
+    .progress-track{background:var(--cream2);border-radius:50px;height:6px;margin-bottom:2rem;overflow:hidden}
+    .progress-fill{height:100%;background:var(--gold);border-radius:50px;transition:width .4s ease}
+    .quiz-step{display:none}.quiz-step.active{display:block}
+    .step-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+    .step-q{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:1.5rem;line-height:1.35}
+    .opts{display:flex;flex-direction:column;gap:.7rem}
+    .opt{padding:.85rem 1.1rem;border:1px solid var(--cream2);border-radius:var(--radius-sm);cursor:pointer;font-size:.92rem;color:var(--text);transition:all var(--tr);font-weight:500;background:var(--cream);text-align:left}
+    .opt:hover{border-color:var(--border);background:var(--white)}
+    .opt.selected{border-color:var(--gold);background:rgba(201,168,76,.1);color:var(--navy);font-weight:600}
+    .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.75rem}
+    .result-card{background:var(--navy);border-radius:var(--radius);padding:2rem;color:var(--white);text-align:center}
+    .result-plan{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin:.5rem 0}
+    .result-return{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:1.5rem}
+    .result-matches{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.75rem;text-align:left}
+    .result-match-item{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.75)}
+    .result-match-item::before{content:'✓';color:var(--gold);font-weight:700}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" role="dialog"><button class="menu-panel-close" id="menuClose">✕</button><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><nav><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="eligibility.html">Check Eligibility</a></nav><div class="menu-panel-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div></aside>
+<nav class="nav"><div class="nav-inner"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div class="nav-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button></div></nav>
+
+<main id="main">
+  <div class="page-header">
+    <span class="section-label">5 Questions · 60 Seconds</span>
+    <h1>Find Your Ideal Plan</h1>
+    <p>Answer five quick questions and we'll match you with the Capitex investment plan that fits your goals, income, and risk tolerance.</p>
+  </div>
+
+  <section style="background:var(--cream);padding:4rem 1.5rem">
+    <div class="quiz-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressBar" style="width:20%"></div></div>
+      <div id="stepCounter" style="font-size:.78rem;color:var(--muted);margin-bottom:1.25rem;font-weight:600">Step 1 of 5</div>
+
+      <div class="quiz-step active" id="step1">
+        <div class="step-label">Question 1</div>
+        <div class="step-q">What is your primary financial goal?</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,1,1)">Build a steady secondary income stream</button>
+          <button class="opt" onclick="pick(this,1,2)">Grow long-term wealth for retirement or family</button>
+          <button class="opt" onclick="pick(this,1,3)">Preserve capital while beating inflation</button>
+          <button class="opt" onclick="pick(this,1,4)">Aggressively grow capital in the medium term</button>
+        </div>
+        <div class="quiz-nav"><span></span><button class="btn btn-gold" onclick="nextStep(2)" id="next1" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" id="step2">
+        <div class="step-label">Question 2</div>
+        <div class="step-q">What is your monthly household income?</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,2,1)">Under $1,000</button>
+          <button class="opt" onclick="pick(this,2,2)">$1,000 – $3,000</button>
+          <button class="opt" onclick="pick(this,2,3)">$3,000 – $8,000</button>
+          <button class="opt" onclick="pick(this,2,4)">Over $8,000</button>
+        </div>
+        <div class="quiz-nav"><button class="btn btn-outline btn-navy" onclick="prevStep(1)">← Back</button><button class="btn btn-gold" onclick="nextStep(3)" id="next2" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" id="step3">
+        <div class="step-label">Question 3</div>
+        <div class="step-q">How much capital are you ready to invest now?</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,3,1)">$250 – $499</button>
+          <button class="opt" onclick="pick(this,3,2)">$500 – $1,499</button>
+          <button class="opt" onclick="pick(this,3,3)">$1,500 – $4,999</button>
+          <button class="opt" onclick="pick(this,3,4)">$5,000 – $14,999</button>
+          <button class="opt" onclick="pick(this,3,5)">$15,000 or more</button>
+        </div>
+        <div class="quiz-nav"><button class="btn btn-outline btn-navy" onclick="prevStep(2)">← Back</button><button class="btn btn-gold" onclick="nextStep(4)" id="next3" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" id="step4">
+        <div class="step-label">Question 4</div>
+        <div class="step-q">How would you describe your investment experience?</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,4,1)">Complete beginner — this would be my first investment</button>
+          <button class="opt" onclick="pick(this,4,2)">Some experience — I've held savings accounts or bonds</button>
+          <button class="opt" onclick="pick(this,4,3)">Intermediate — I've invested in stocks or funds before</button>
+          <button class="opt" onclick="pick(this,4,4)">Experienced — I actively manage a portfolio</button>
+        </div>
+        <div class="quiz-nav"><button class="btn btn-outline btn-navy" onclick="prevStep(3)">← Back</button><button class="btn btn-gold" onclick="nextStep(5)" id="next4" disabled>Next →</button></div>
+      </div>
+
+      <div class="quiz-step" id="step5">
+        <div class="step-label">Question 5</div>
+        <div class="step-q">How comfortable are you with short-term fluctuations in return?</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,5,1)">Not at all — I want guaranteed stability</button>
+          <button class="opt" onclick="pick(this,5,2)">Slightly — small variations are acceptable</button>
+          <button class="opt" onclick="pick(this,5,3)">Moderately — I understand portfolio returns vary monthly</button>
+          <button class="opt" onclick="pick(this,5,4)">Very — I accept higher volatility for higher returns</button>
+        </div>
+        <div class="quiz-nav"><button class="btn btn-outline btn-navy" onclick="prevStep(4)">← Back</button><button class="btn btn-gold" onclick="showResult()" id="next5" disabled>See My Results →</button></div>
+      </div>
+
+      <div class="quiz-step" id="stepResult">
+        <div class="result-card">
+          <div style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:.35rem">Your Matched Plan</div>
+          <div class="result-plan" id="resultPlan">Standard</div>
+          <div class="result-return" id="resultReturn">10% monthly return · from $1,500</div>
+          <div class="result-matches" id="resultMatches"></div>
+          <a id="resultCTA" href="signup.html?plan=standard" class="btn btn-gold btn-lg" style="width:100%;margin-bottom:.75rem">Open Your Account Now</a>
+          <a href="investments.html" class="btn btn-outline-gold btn-lg" style="width:100%">View All Plans</a>
+        </div>
+        <p style="font-size:.76rem;color:var(--muted);margin-top:1.25rem;text-align:center;line-height:1.6">These results are a personalised recommendation, not financial advice. You may choose any plan regardless of this result. Capital is at risk.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#122848"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><p>Professionally managed investment portfolios starting from $250.</p><p class="footer-disclaimer">Returns are estimates. Capital is at risk.</p></div><div><h4>Plans</h4><ul><li><a href="investments.html">All Plans</a></li><li><a href="signup.html">Open Account</a></li></ul></div><div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>© <span class="year-auto">2024</span> Capitex Finance Ltd.</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+<button class="chat-fab" id="chatFab">💬</button>
+<div class="chat-panel" id="chatPanel"><div class="chat-hdr"><div><h4>Talk to an Advisor</h4><p>Usually replies within 2 hours</p></div><button class="chat-close" id="chatClose">✕</button></div><form class="chat-body" id="chatForm"><input type="hidden" name="_source" value="eligibility-chat"/><input type="text" name="name" placeholder="Your name" required/><input type="email" name="email" placeholder="Email address" required/><textarea name="message" placeholder="How can we help?" rows="3" required></textarea><button type="submit" class="btn btn-gold btn-full">Send Message</button></form></div>
+<button class="to-top" aria-label="Back to top">↑</button>
+
+<script>
+const answers={};
+const PLANS=[
+  {key:'starter',name:'Starter',min:'$250',rate:'5%',desc:'from $250'},
+  {key:'basic',name:'Basic',min:'$500',rate:'7%',desc:'from $500'},
+  {key:'standard',name:'Standard',min:'$1,500',rate:'10%',desc:'from $1,500'},
+  {key:'premium',name:'Premium',min:'$5,000',rate:'14%',desc:'from $5,000'},
+  {key:'elite',name:'Elite',min:'$15,000',rate:'19%',desc:'from $15,000'}
+];
+
+function pick(btn,step,val){
+  btn.closest('.opts').querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[step]=val;
+  document.getElementById('next'+step)?.removeAttribute('disabled');
+}
+function nextStep(n){
+  document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.getElementById('progressBar').style.width=(n*20)+'%';
+  document.getElementById('stepCounter').textContent='Step '+n+' of 5';
+}
+function prevStep(n){nextStep(n);}
+function showResult(){
+  const capital=answers[3]||1;
+  const risk=answers[5]||1;
+  let planIdx=0;
+  if(capital>=5||risk>=4) planIdx=4;
+  else if(capital>=4) planIdx=3;
+  else if(capital>=3||risk>=3) planIdx=2;
+  else if(capital>=2) planIdx=1;
+  const plan=PLANS[planIdx];
+  document.getElementById('resultPlan').textContent=plan.name;
+  document.getElementById('resultReturn').textContent=plan.rate+' monthly return · '+plan.desc;
+  document.getElementById('resultCTA').href='signup.html?plan='+plan.key;
+  const reasons=[
+    'Matches your capital range ('+['<$500','$500-$1,499','$1,500-$4,999','$5,000-$14,999','$15,000+'][capital-1]+')',
+    'Aligns with your '+(risk<=2?'conservative':'moderate to growth-oriented')+' risk profile',
+    'Supports your goal: '+['steady income','long-term growth','capital preservation','aggressive growth'][answers[1]-1]||'investment growth',
+  ];
+  document.getElementById('resultMatches').innerHTML=reasons.map(r=>`<div class="result-match-item">${r}</div>`).join('');
+  document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('stepResult').classList.add('active');
+  document.getElementById('progressBar').style.width='100%';
+  document.getElementById('stepCounter').textContent='Results Ready';
+}
+</script>
+<script defer src="../assets/js/main.js"></script>
+</body>
+</html>

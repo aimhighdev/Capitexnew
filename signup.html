@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open Account — Capitex</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/auth.css"/>
+</head>
+<body>
+<div class="auth-page">
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <a class="brand" href="../index.html">
+        <svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
+        <span class="brand-name">Cap<span>i</span>tex</span>
+      </a>
+      <p class="auth-tagline">Your Money.<br/><em>Working Harder.</em></p>
+      <p class="auth-tagline-sub">Join over 4,800 investors earning consistent monthly returns across five structured portfolio tiers.</p>
+      <div class="auth-benefits">
+        <div class="auth-benefit"><div class="auth-benefit-icon">💰</div><p>Start from just $250 — no hidden fees, no lock-in traps</p></div>
+        <div class="auth-benefit"><div class="auth-benefit-icon">📊</div><p>Diversified across stocks, real estate, bonds & commodities</p></div>
+        <div class="auth-benefit"><div class="auth-benefit-icon">🛡️</div><p>KYC-verified accounts with end-to-end transaction security</p></div>
+        <div class="auth-benefit"><div class="auth-benefit-icon">🌍</div><p>Available in 47+ countries — USD default currency</p></div>
+      </div>
+    </div>
+    <p class="auth-left-footer">Investment returns are estimates based on historical performance. Past results do not guarantee future outcomes. Capital is at risk.</p>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <div class="auth-form-wrap">
+      <h2>Create Your Account</h2>
+      <p class="auth-sub">Already have an account? <a href="login.html">Sign in here</a></p>
+
+      <!-- Google -->
+      <button class="google-btn" id="googleBtn" type="button">
+        <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="divider">or register with email</div>
+
+      <!-- Plan selector -->
+      <p style="font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;">Select Investment Plan</p>
+      <div class="plan-chips" id="planChips">
+        <span class="plan-chip" data-plan="starter">Starter · $250</span>
+        <span class="plan-chip" data-plan="basic">Basic · $500</span>
+        <span class="plan-chip active" data-plan="standard">Standard · $1,500</span>
+        <span class="plan-chip" data-plan="premium">Premium · $5,000</span>
+        <span class="plan-chip" data-plan="elite">Elite · $15,000</span>
+      </div>
+
+      <form id="signupForm">
+        <div class="form-row-2">
+          <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="John" required/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="Smith" required/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="john@example.com" required/></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="+1 555 000 0000" required/></div>
+        <div class="form-group">
+          <label>Country</label>
+          <select id="country">
+            <option value="US" selected>🇺🇸 United States</option>
+            <option value="GB">🇬🇧 United Kingdom</option>
+            <option value="NG">🇳🇬 Nigeria</option>
+            <option value="GH">🇬🇭 Ghana</option>
+            <option value="KE">🇰🇪 Kenya</option>
+            <option value="ZA">🇿🇦 South Africa</option>
+            <option value="CA">🇨🇦 Canada</option>
+            <option value="AU">🇦🇺 Australia</option>
+            <option value="IN">🇮🇳 India</option>
+            <option value="DE">🇩🇪 Germany</option>
+            <option value="FR">🇫🇷 France</option>
+            <option value="AE">🇦🇪 United Arab Emirates</option>
+            <option value="SG">🇸🇬 Singapore</option>
+            <option value="BR">🇧🇷 Brazil</option>
+            <option value="ZZ">🌍 Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Minimum 8 characters" required minlength="8"/>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Repeat password" required/>
+        </div>
+        <p id="signupError" style="color:#ff453a;font-size:.82rem;margin-bottom:.75rem;display:none"></p>
+        <button type="submit" class="btn btn-gold btn-full btn-lg" id="signupBtn">Create Account</button>
+      </form>
+      <p class="auth-agree">By creating an account you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getDatabase, ref, set, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDqpisHE31KO0wEN3gQwWOYZPHpgUCVIGs",
+  authDomain: "vaultora-site.firebaseapp.com",
+  databaseURL: "https://vaultora-site-default-rtdb.firebaseio.com",
+  projectId: "vaultora-site",
+  storageBucket: "vaultora-site.firebasestorage.app",
+  messagingSenderId: "45703389328",
+  appId: "1:45703389328:web:d4c833fa32792eb8017815"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+// Pre-select plan from URL
+const params = new URLSearchParams(location.search);
+const urlPlan = params.get('plan');
+if (urlPlan) {
+  document.querySelectorAll('.plan-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.plan === urlPlan);
+  });
+}
+
+// Plan chips toggle
+document.querySelectorAll('.plan-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.plan-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+});
+
+function getSelectedPlan() {
+  return document.querySelector('.plan-chip.active')?.dataset.plan || 'standard';
+}
+
+function showError(msg) {
+  const el = document.getElementById('signupError');
+  el.textContent = msg; el.style.display = 'block';
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+async function saveUser(uid, data) {
+  await set(ref(db, `users/${uid}`), {
+    ...data,
+    role: 'user',
+    status: 'active',
+    walletBalance: 0,
+    totalInvested: 0,
+    totalReturns: 0,
+    createdAt: Date.now()
+  });
+}
+
+// Email signup
+document.getElementById('signupForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('signupBtn');
+  const pw = document.getElementById('password').value;
+  const cpw = document.getElementById('confirmPassword').value;
+  if (pw !== cpw) { showError('Passwords do not match.'); return; }
+  btn.textContent = 'Creating account…'; btn.disabled = true;
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, document.getElementById('email').value, pw);
+    await saveUser(cred.user.uid, {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: cred.user.email,
+      phone: document.getElementById('phone').value,
+      country: document.getElementById('country').value,
+      selectedPlan: getSelectedPlan()
+    });
+    toast('Account created! Redirecting…');
+    setTimeout(() => location.href = 'dashboard.html', 1200);
+  } catch (err) {
+    showError(err.message.replace('Firebase: ','').replace(/\(auth.*\)/,'').trim());
+    btn.textContent = 'Create Account'; btn.disabled = false;
+  }
+});
+
+// Google signup
+document.getElementById('googleBtn').addEventListener('click', async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const cred = await signInWithPopup(auth, provider);
+    const nameParts = (cred.user.displayName || '').split(' ');
+    await saveUser(cred.user.uid, {
+      firstName: nameParts[0] || '',
+      lastName: nameParts.slice(1).join(' ') || '',
+      email: cred.user.email,
+      phone: '',
+      country: 'US',
+      selectedPlan: getSelectedPlan()
+    });
+    location.href = 'dashboard.html';
+  } catch (err) {
+    toast('Google sign-in failed. Please try again.');
+  }
+});
+</script>
+</body>
+</html>

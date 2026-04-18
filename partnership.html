@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partnership — Capitex</title>
+  <meta name="description" content="Partner with Capitex. Institutional, fund, and strategic co-investment partnerships available from $10,000."/>
+  <link rel="canonical" href="https://capitex.finance/pages/partnership.html"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .partner-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-bottom:3rem}
+    .pt-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:2rem;transition:all var(--tr);position:relative}
+    .pt-card:hover{border-color:var(--border);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+    .pt-card.featured{border-color:var(--gold)}
+    .pt-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .85rem;border-radius:50px;white-space:nowrap}
+    .pt-name{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.25rem}
+    .pt-min{font-size:.8rem;color:var(--muted);margin-bottom:1rem}
+    .pt-amount{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700;line-height:1;margin-bottom:1.1rem}
+    .pt-features{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+    .pt-features li{font-size:.87rem;color:var(--text);display:flex;gap:.5rem;align-items:flex-start;line-height:1.45}
+    .pt-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+    .deal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .deal-card{background:var(--navy);border:1px solid rgba(201,168,76,.18);border-radius:var(--radius);padding:1.75rem;transition:all var(--tr)}
+    .deal-card:hover{border-color:rgba(201,168,76,.45);transform:translateY(-3px)}
+    .deal-icon{font-size:1.75rem;margin-bottom:.9rem}
+    .deal-card h3{color:var(--white);font-size:1rem;margin-bottom:.4rem}
+    .deal-card p{color:rgba(255,255,255,.6);font-size:.86rem;line-height:1.6}
+    @media(max-width:768px){.partner-tiers,.deal-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" role="dialog"><button class="menu-panel-close" id="menuClose">✕</button><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><nav><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About Us</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a></nav><div class="menu-panel-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div></aside>
+<nav class="nav"><div class="nav-inner"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a></div><div class="nav-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button></div></nav>
+
+<main id="main">
+  <div class="page-header">
+    <span class="section-label">Institutional & Fund Partners</span>
+    <h1>Partner With Capitex</h1>
+    <p>For organisations, family offices, and fund managers looking to co-invest alongside Capitex's professionally managed portfolios at scale.</p>
+  </div>
+
+  <section style="background:var(--cream)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Partnership Tiers</span>
+        <h2 class="section-title">Three Levels of Strategic Partnership</h2>
+        <p class="section-sub">Each tier includes dedicated account management, bespoke reporting, and preferential returns for higher capital commitments.</p>
+      </div>
+      <div class="partner-tiers">
+        <div class="pt-card reveal">
+          <div class="pt-name">Associate</div>
+          <div class="pt-min">Minimum Commitment</div>
+          <div class="pt-amount">$10,000</div>
+          <ul class="pt-features">
+            <li>Access to all five portfolio tiers</li>
+            <li>Dedicated relationship manager</li>
+            <li>Monthly consolidated report</li>
+            <li>Referral commission programme</li>
+            <li>Priority withdrawal (72hr)</li>
+          </ul>
+          <a href="#partnerForm" class="btn btn-navy btn-full">Apply for Associate</a>
+        </div>
+        <div class="pt-card featured reveal" style="transition-delay:.1s">
+          <div class="pt-badge">Recommended</div>
+          <div class="pt-name">Institutional</div>
+          <div class="pt-min">Minimum Commitment</div>
+          <div class="pt-amount">$50,000</div>
+          <ul class="pt-features">
+            <li>All Associate benefits</li>
+            <li>Enhanced return structures</li>
+            <li>Bi-weekly advisor calls</li>
+            <li>Custom portfolio allocation on request</li>
+            <li>Priority withdrawal (48hr)</li>
+            <li>Quarterly deal flow briefings</li>
+          </ul>
+          <a href="#partnerForm" class="btn btn-gold btn-full">Apply for Institutional</a>
+        </div>
+        <div class="pt-card reveal" style="transition-delay:.2s">
+          <div class="pt-name">Strategic</div>
+          <div class="pt-min">Minimum Commitment</div>
+          <div class="pt-amount">$200,000</div>
+          <ul class="pt-features">
+            <li>All Institutional benefits</li>
+            <li>Direct deal co-investment access</li>
+            <li>Dedicated senior advisor</li>
+            <li>Private equity & infrastructure deals</li>
+            <li>Same-day withdrawal</li>
+            <li>Board-level reporting available</li>
+          </ul>
+          <a href="#partnerForm" class="btn btn-navy btn-full">Apply for Strategic</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plans" style="background:var(--navy)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Deal Categories</span>
+        <h2 class="section-title" style="color:#fff">What Partners Co-Invest In</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,.6)">Our institutional partners gain access to curated deal flow across three high-conviction asset categories.</p>
+      </div>
+      <div class="deal-grid">
+        <div class="deal-card reveal"><div class="deal-icon">🏢</div><h3>Commercial Real Estate</h3><p>Income-generating commercial property across key urban markets in North America, Europe, and sub-Saharan Africa. Quarterly income distributions.</p></div>
+        <div class="deal-card reveal" style="transition-delay:.1s"><div class="deal-icon">📊</div><h3>Private Equity</h3><p>Co-investment in growth-stage companies across fintech, healthcare, and consumer sectors. Deal-by-deal basis with full due diligence access.</p></div>
+        <div class="deal-card reveal" style="transition-delay:.2s"><div class="deal-icon">🏗️</div><h3>Infrastructure</h3><p>Long-duration infrastructure assets including renewable energy projects, logistics facilities, and toll concessions with stable, contracted cash flows.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" style="background:var(--white)" id="partnerForm">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Apply Now</span>
+        <h2 class="section-title">Partnership Enquiry</h2>
+        <p class="section-sub">Complete the form below. A senior advisor will contact you within one business day to discuss your goals and structure a partnership proposal.</p>
+      </div>
+      <div class="form-card">
+        <form data-formspree="xpwboyrv">
+          <input type="hidden" name="_source" value="partnership-form"/>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" name="firstName" required placeholder="Marcus"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="lastName" required placeholder="Reid"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Organisation Name</label><input type="text" name="org" required placeholder="Company / Fund name"/></div>
+            <div class="form-group"><label>Role / Title</label><input type="text" name="role" placeholder="CEO, Fund Manager, etc."/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="marcus@fund.com"/></div>
+            <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="+1 555 000 0000"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Partnership Tier</label><select name="tier"><option>Associate — $10,000</option><option selected>Institutional — $50,000</option><option>Strategic — $200,000</option></select></div>
+            <div class="form-group"><label>Capital Available (USD)</label><input type="text" name="capital" placeholder="e.g. $75,000"/></div>
+          </div>
+          <div class="form-group full"><label>Tell Us About Your Organisation</label><textarea name="message" required placeholder="Describe your fund, investment mandate, and what you're looking to achieve through a partnership with Capitex." rows="4"></textarea></div>
+          <button type="submit" class="btn btn-gold btn-lg btn-full" style="margin-top:.5rem">Submit Partnership Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#122848"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><p>Professionally managed investment portfolios starting from $250.</p><p class="footer-disclaimer">Returns are estimates. Capital is at risk.</p></div><div><h4>Plans</h4><ul><li><a href="investments.html">All Plans</a></li><li><a href="signup.html">Open Account</a></li></ul></div><div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partnership.html">Partnership</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>© <span class="year-auto">2024</span> Capitex Finance Ltd. All rights reserved.</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+<button class="chat-fab" id="chatFab" aria-label="Open chat">💬</button>
+<div class="chat-panel" id="chatPanel"><div class="chat-hdr"><div><h4>Talk to an Advisor</h4><p>Usually replies within 2 hours</p></div><button class="chat-close" id="chatClose">✕</button></div><form class="chat-body" id="chatForm"><input type="hidden" name="_source" value="partnership-chat"/><input type="text" name="name" placeholder="Your name" required/><input type="email" name="email" placeholder="Email address" required/><textarea name="message" placeholder="How can we help?" rows="3" required></textarea><button type="submit" class="btn btn-gold btn-full">Send Message</button></form></div>
+<button class="to-top" aria-label="Back to top">↑</button>
+<script defer src="../assets/js/main.js"></script>
+</body>
+</html>

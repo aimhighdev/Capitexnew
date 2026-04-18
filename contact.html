@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — Capitex</title>
+  <meta name="description" content="Speak with a Capitex advisor. Get answers about investment plans, account setup, withdrawals, and partnership opportunities."/>
+  <link rel="canonical" href="https://capitex.finance/pages/contact.html"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .contact-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+    .contact-info{display:flex;flex-direction:column;gap:1.25rem}
+    .info-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:1.4rem;display:flex;align-items:flex-start;gap:.85rem}
+    .info-icon{width:40px;height:40px;background:var(--gold-pale);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .info-card h4{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+    .info-card p{font-size:.87rem;color:var(--muted);line-height:1.5}
+    .inquiry-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem}
+    .inq-tab{padding:.42rem 1.1rem;border:1px solid var(--cream2);border-radius:6px;font-size:.83rem;font-weight:600;color:var(--muted);background:var(--white);cursor:pointer;transition:all var(--tr)}
+    .inq-tab.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+    .inq-fields{display:none}.inq-fields.active{display:block}
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" role="dialog"><button class="menu-panel-close" id="menuClose">✕</button><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><nav><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About Us</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a><a href="eligibility.html">Check Eligibility</a></nav><div class="menu-panel-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div></aside>
+<nav class="nav"><div class="nav-inner"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About</a><a href="partnership.html">Partnership</a><a href="contact.html">Contact</a></div><div class="nav-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button></div></nav>
+
+<main id="main">
+  <div class="page-header">
+    <span class="section-label">Get in Touch</span>
+    <h1>Contact Our Team</h1>
+    <p>Our advisors are available Monday–Friday, 9am–6pm GMT. Most enquiries are responded to within 2 business hours.</p>
+  </div>
+
+  <section class="form-section" style="background:var(--cream)">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="info-card"><div class="info-icon">📧</div><div><h4>Email</h4><p>advisors@capitex.finance<br/>support@capitex.finance</p></div></div>
+          <div class="info-card"><div class="info-icon">💬</div><div><h4>Live Chat</h4><p>Use the chat widget on any page for instant messaging with our support team.</p></div></div>
+          <div class="info-card"><div class="info-icon">📞</div><div><h4>Phone</h4><p>+1 (800) 555-CAPX<br/>Mon–Fri, 9am–6pm GMT</p></div></div>
+          <div class="info-card"><div class="info-icon">🌍</div><div><h4>Global Coverage</h4><p>We serve investors in 47+ countries. Regional advisors available for Africa, Europe, North America & Asia-Pacific.</p></div></div>
+        </div>
+        <div class="reveal" style="transition-delay:.1s">
+          <div class="form-card" style="max-width:100%">
+            <h3 style="font-family:'Playfair Display',serif;color:var(--navy);margin-bottom:.35rem">Send Us a Message</h3>
+            <p style="font-size:.87rem;color:var(--muted);margin-bottom:1.5rem">Select your inquiry type — we'll route your message to the right advisor.</p>
+            <div class="inquiry-tabs">
+              <button class="inq-tab active" onclick="switchInq(this,'general')">General</button>
+              <button class="inq-tab" onclick="switchInq(this,'investment')">Investment</button>
+              <button class="inq-tab" onclick="switchInq(this,'withdrawal')">Withdrawal</button>
+              <button class="inq-tab" onclick="switchInq(this,'partnership')">Partnership</button>
+            </div>
+            <form data-formspree="xpwboyrv">
+              <input type="hidden" name="_source" value="contact-form"/>
+              <input type="hidden" name="inquiry_type" id="inquiryType" value="general"/>
+              <div class="form-row">
+                <div class="form-group"><label>First Name</label><input type="text" name="firstName" required placeholder="John"/></div>
+                <div class="form-group"><label>Last Name</label><input type="text" name="lastName" required placeholder="Smith"/></div>
+              </div>
+              <div class="form-group full"><label>Email Address</label><input type="email" name="email" required placeholder="john@example.com"/></div>
+
+              <!-- General -->
+              <div class="inq-fields active" id="inq-general">
+                <div class="form-group full"><label>Subject</label><input type="text" name="subject" placeholder="What's this about?"/></div>
+              </div>
+              <!-- Investment -->
+              <div class="inq-fields" id="inq-investment">
+                <div class="form-row">
+                  <div class="form-group"><label>Plan of Interest</label><select name="plan"><option>Starter — $250</option><option>Basic — $500</option><option selected>Standard — $1,500</option><option>Premium — $5,000</option><option>Elite — $15,000</option></select></div>
+                  <div class="form-group"><label>Capital Available (USD)</label><input type="text" name="capital" placeholder="e.g. $2,000"/></div>
+                </div>
+              </div>
+              <!-- Withdrawal -->
+              <div class="inq-fields" id="inq-withdrawal">
+                <div class="form-row">
+                  <div class="form-group"><label>Account Email</label><input type="email" name="accountEmail" placeholder="Registered email"/></div>
+                  <div class="form-group"><label>Withdrawal Amount</label><input type="text" name="withdrawAmount" placeholder="e.g. $500"/></div>
+                </div>
+              </div>
+              <!-- Partnership -->
+              <div class="inq-fields" id="inq-partnership">
+                <div class="form-row">
+                  <div class="form-group"><label>Organisation Name</label><input type="text" name="org" placeholder="Company or fund name"/></div>
+                  <div class="form-group"><label>Capital Range</label><select name="partnerCapital"><option>$10,000–$50,000</option><option>$50,000–$200,000</option><option>$200,000+</option></select></div>
+                </div>
+              </div>
+
+              <div class="form-group full" style="margin-top:.75rem"><label>Message</label><textarea name="message" required placeholder="Tell us more about your enquiry…" rows="4"></textarea></div>
+              <button type="submit" class="btn btn-gold btn-lg" style="margin-top:.75rem;width:100%">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#122848"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><p>Professionally managed investment portfolios starting from $250.</p><p class="footer-disclaimer">Returns are estimates. Capital is at risk.</p></div><div><h4>Plans</h4><ul><li><a href="investments.html">View All Plans</a></li><li><a href="signup.html">Open Account</a></li><li><a href="login.html">Investor Login</a></li></ul></div><div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partnership.html">Partnership</a></li><li><a href="careers.html">Careers</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>© <span class="year-auto">2024</span> Capitex Finance Ltd.</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+<button class="chat-fab" id="chatFab" aria-label="Open chat">💬</button>
+<div class="chat-panel" id="chatPanel"><div class="chat-hdr"><div><h4>Talk to an Advisor</h4><p>Usually replies within 2 hours</p></div><button class="chat-close" id="chatClose">✕</button></div><form class="chat-body" id="chatForm"><input type="hidden" name="_source" value="contact-chat"/><input type="text" name="name" placeholder="Your name" required/><input type="email" name="email" placeholder="Email address" required/><textarea name="message" placeholder="How can we help?" rows="3" required></textarea><button type="submit" class="btn btn-gold btn-full">Send Message</button></form></div>
+<button class="to-top" aria-label="Back to top">↑</button>
+<script>
+function switchInq(btn,type){
+  document.querySelectorAll('.inq-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.inq-fields').forEach(f=>f.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('inq-'+type).classList.add('active');
+  document.getElementById('inquiryType').value=type;
+}
+</script>
+<script defer src="../assets/js/main.js"></script>
+</body>
+</html>

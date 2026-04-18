@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Login — Capitex</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%230D3D2F'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='22' font-weight='bold' fill='%23C9A84C'>C</text></svg>">
+<link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-visual">
+    <div class="auth-visual-content">
+      <svg width="44" height="44" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#C9A84C"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="22" font-weight="bold" fill="#0D3D2F">C</text></svg>
+      <h2 class="auth-tagline"><span>Admin</span> Access</h2>
+      <p class="auth-visual-sub">Restricted to authorized Capitex administrators only.</p>
+    </div>
+  </div>
+  <div class="auth-form-wrap">
+    <div class="auth-form-inner">
+      <div class="auth-logo"><svg width="32" height="32" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="#C9A84C"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="22" font-weight="bold" fill="#0D3D2F">C</text></svg><span class="brand-name">Capit<span>ex</span> Admin</span></div>
+      <h2>Administrator Sign In</h2>
+      <p class="sub">This area is restricted. Unauthorized access is prohibited.</p>
+      <div class="error-msg" id="errorMsg"></div>
+      <form id="adminLoginForm">
+        <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
+        <div class="form-group"><label>Password</label><input type="password" id="password" required></div>
+        <button type="submit" class="btn btn-primary" id="loginBtn">Sign In as Admin</button>
+      </form>
+      <div class="auth-switch"><a href="login.html">← Back to user login</a></div>
+    </div>
+  </div>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+const app = initializeApp({apiKey:"AIzaSyDqpisHE31KO0wEN3gQwWOYZPHpgUCVIGs",authDomain:"vaultora-site.firebaseapp.com",databaseURL:"https://vaultora-site-default-rtdb.firebaseio.com",projectId:"vaultora-site",storageBucket:"vaultora-site.firebasestorage.app",messagingSenderId:"45703389328",appId:"1:45703389328:web:d4c833fa32792eb8017815"});
+const auth = getAuth(app); const db = getDatabase(app);
+document.getElementById('adminLoginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn'); btn.textContent='Verifying…'; btn.disabled=true;
+  try {
+    const cred = await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('password').value);
+    const snap = await get(ref(db,'users/'+cred.user.uid));
+    if (snap.val()?.role==='admin') { location.href='admin.html'; }
+    else { const el=document.getElementById('errorMsg'); el.textContent='Access denied. Not an admin account.'; el.classList.add('show'); btn.textContent='Sign In as Admin'; btn.disabled=false; }
+  } catch(err) { const el=document.getElementById('errorMsg'); el.textContent='Invalid credentials.'; el.classList.add('show'); btn.textContent='Sign In as Admin'; btn.disabled=false; }
+});
+</script>
+</body>
+</html>

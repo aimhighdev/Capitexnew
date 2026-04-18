@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers — Capitex</title>
+  <meta name="description" content="Join the Capitex team. Open roles in investment advisory, technology, compliance, and client success."/>
+  <link rel="canonical" href="https://capitex.finance/pages/careers.html"/>
+  <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='%230B1F3A'/><path d='M8 10h8l4 12 4-12h8' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/></svg>" type="image/svg+xml"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .jobs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .job-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:1.75rem;transition:all var(--tr);cursor:pointer}
+    .job-card:hover{border-color:var(--border);box-shadow:var(--shadow);transform:translateY(-2px)}
+    .job-dept{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+    .job-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:.5rem}
+    .job-meta{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:.9rem}
+    .job-tag{font-size:.76rem;font-weight:600;background:var(--cream);padding:.22rem .65rem;border-radius:4px;color:var(--muted)}
+    .job-desc{font-size:.87rem;color:var(--muted);line-height:1.6;margin-bottom:1.1rem}
+    .perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .perk-card{background:var(--white);border:1px solid var(--cream2);border-radius:var(--radius);padding:1.5rem;text-align:center}
+    .perk-icon{font-size:1.75rem;margin-bottom:.75rem}
+    .perk-card h3{font-size:.97rem;color:var(--navy);margin-bottom:.35rem}
+    .perk-card p{font-size:.83rem;color:var(--muted);line-height:1.55}
+    .modal-backdrop{display:none;position:fixed;inset:0;z-index:950;background:rgba(11,31,58,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center}
+    .modal-backdrop.open{display:flex}
+    .modal{background:var(--white);border-radius:var(--radius);padding:2rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:0 12px 48px rgba(11,31,58,.18)}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+    .modal-header h3{font-size:1.1rem;color:var(--navy)}
+    .modal-close{background:none;border:none;font-size:1.2rem;color:var(--muted);cursor:pointer}
+    .form-group{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1rem}
+    .form-group label{font-size:.8rem;font-weight:600;color:var(--navy)}
+    .form-group input,.form-group textarea,.form-group select{padding:.7rem 1rem;border:1px solid var(--cream2);border-radius:8px;font-size:.9rem;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .28s ease}
+    .form-group input:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+    .form-group textarea{resize:vertical;min-height:100px}
+    @media(max-width:768px){.jobs-grid,.perks-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" role="dialog"><button class="menu-panel-close" id="menuClose">✕</button><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><nav><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="careers.html">Careers</a></nav><div class="menu-panel-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div></aside>
+<nav class="nav"><div class="nav-inner"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#0B1F3A"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="investments.html">Investment Plans</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div class="nav-actions"><a href="login.html" class="btn btn-outline-gold">Log In</a><a href="signup.html" class="btn btn-gold">Open Account</a></div><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button></div></nav>
+
+<main id="main">
+  <div class="page-header">
+    <span class="section-label">Join Our Team</span>
+    <h1>Careers at Capitex</h1>
+    <p>We're building the infrastructure for accessible professional investment management. If that mission excites you, we'd love to hear from you.</p>
+  </div>
+
+  <section style="background:var(--cream)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Open Positions</span>
+        <h2 class="section-title">Current Openings</h2>
+        <p class="section-sub">All roles are remote-first with quarterly in-person team sprints.</p>
+      </div>
+      <div class="jobs-grid">
+        <div class="job-card reveal" onclick="openApply('Senior Investment Advisor')">
+          <div class="job-dept">Investment Advisory</div>
+          <div class="job-title">Senior Investment Advisor</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Full-time</span><span class="job-tag">$80K–$110K</span></div>
+          <div class="job-desc">Lead investor relationships for Premium and Elite tier clients. Provide monthly portfolio reviews, respond to withdrawal and reallocation requests, and onboard new high-value accounts.</div>
+          <button class="btn btn-navy">Apply Now →</button>
+        </div>
+        <div class="job-card reveal" style="transition-delay:.08s" onclick="openApply('Client Success Specialist')">
+          <div class="job-dept">Client Success</div>
+          <div class="job-title">Client Success Specialist</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Full-time</span><span class="job-tag">$45K–$65K</span></div>
+          <div class="job-desc">First point of contact for new investors. Handle account setup, KYC queries, deposit confirmation, and general support. Experience in financial services preferred.</div>
+          <button class="btn btn-navy">Apply Now →</button>
+        </div>
+        <div class="job-card reveal" onclick="openApply('Full-Stack Developer')">
+          <div class="job-dept">Engineering</div>
+          <div class="job-title">Full-Stack Developer</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Full-time</span><span class="job-tag">$90K–$130K</span></div>
+          <div class="job-desc">Build and maintain the Capitex investor dashboard, admin panel, and payment integration layer. Stack: Firebase, Vanilla JS / React, Node.js. Experience with financial platforms a strong plus.</div>
+          <button class="btn btn-navy">Apply Now →</button>
+        </div>
+        <div class="job-card reveal" style="transition-delay:.08s" onclick="openApply('Compliance Officer')">
+          <div class="job-dept">Legal & Compliance</div>
+          <div class="job-title">Compliance Officer</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Full-time</span><span class="job-tag">$70K–$95K</span></div>
+          <div class="job-desc">Manage KYC/AML processes, monitor regulatory changes across our operating regions, and ensure our investor communications meet all applicable compliance standards.</div>
+          <button class="btn btn-navy">Apply Now →</button>
+        </div>
+        <div class="job-card reveal" onclick="openApply('Marketing Manager')">
+          <div class="job-dept">Growth & Marketing</div>
+          <div class="job-title">Marketing Manager</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Full-time</span><span class="job-tag">$55K–$80K</span></div>
+          <div class="job-desc">Drive investor acquisition across digital channels. Build content strategy, manage paid campaigns, and grow our presence in key markets across Africa, the UK, and North America.</div>
+          <button class="btn btn-navy">Apply Now →</button>
+        </div>
+        <div class="job-card reveal" style="transition-delay:.08s" onclick="openApply('Open Application')">
+          <div class="job-dept">All Departments</div>
+          <div class="job-title">Open Application</div>
+          <div class="job-meta"><span class="job-tag">Remote</span><span class="job-tag">Any level</span></div>
+          <div class="job-desc">Don't see a role that fits? Send us an open application. If your background is strong and the timing is right, we'll reach out when a matching position opens.</div>
+          <button class="btn btn-navy">Send Application →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--white)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Why Capitex</span>
+        <h2 class="section-title">Life at Capitex</h2>
+      </div>
+      <div class="perks-grid">
+        <div class="perk-card reveal"><div class="perk-icon">🌍</div><h3>Fully Remote</h3><p>Work from anywhere in the world. We operate across time zones with async-first communication.</p></div>
+        <div class="perk-card reveal" style="transition-delay:.08s"><div class="perk-icon">📈</div><h3>Capitex Investment Account</h3><p>All full-time employees receive a funded Standard plan account as part of their compensation package.</p></div>
+        <div class="perk-card reveal" style="transition-delay:.16s"><div class="perk-icon">💻</div><h3>Equipment Budget</h3><p>$1,500 annual equipment allowance to set up your ideal remote workspace.</p></div>
+        <div class="perk-card reveal"><div class="perk-icon">🎓</div><h3>Learning Stipend</h3><p>$800/year for professional development — courses, certifications, and conferences in your field.</p></div>
+        <div class="perk-card reveal" style="transition-delay:.08s"><div class="perk-icon">🏖️</div><h3>Flexible PTO</h3><p>Unlimited paid leave with a minimum of 20 days encouraged. We mean it — burnout helps no one.</p></div>
+        <div class="perk-card reveal" style="transition-delay:.16s"><div class="perk-icon">🤝</div><h3>Mission-Driven Culture</h3><p>We're building something that genuinely helps people grow wealth. Every role matters to that mission.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Apply Modal -->
+<div class="modal-backdrop" id="applyModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Apply — <span id="applyRole">Role</span></h3><button class="modal-close" onclick="document.getElementById('applyModal').classList.remove('open')">✕</button></div>
+    <form data-formspree="xpwboyrv">
+      <input type="hidden" name="_source" value="careers-form"/>
+      <input type="hidden" name="role" id="applyRoleField" value=""/>
+      <div class="form-group"><label>Full Name</label><input type="text" name="name" required placeholder="Your full name"/></div>
+      <div class="form-group"><label>Email Address</label><input type="email" name="email" required placeholder="you@email.com"/></div>
+      <div class="form-group"><label>LinkedIn Profile</label><input type="url" name="linkedin" placeholder="https://linkedin.com/in/yourprofile"/></div>
+      <div class="form-group"><label>Years of Relevant Experience</label><select name="experience"><option>0–1 years</option><option>2–4 years</option><option>5–9 years</option><option>10+ years</option></select></div>
+      <div class="form-group"><label>Why Capitex? (Cover note)</label><textarea name="message" required placeholder="Tell us why you want this role and what you bring to the team…" rows="4"></textarea></div>
+      <button type="submit" class="btn btn-gold btn-full btn-lg">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="../index.html"><svg class="brand-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="40" height="40" rx="8" fill="#122848"/><path d="M8 10h8l4 12 4-12h8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22l8 8 8-8" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg><span class="brand-name">Cap<span>i</span>tex</span></a><p>Professionally managed investment portfolios starting from $250.</p><p class="footer-disclaimer">Returns are estimates. Capital is at risk.</p></div><div><h4>Plans</h4><ul><li><a href="investments.html">All Plans</a></li><li><a href="signup.html">Open Account</a></li></ul></div><div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="partnership.html">Partnership</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li></ul></div></div><div class="footer-bottom"><span>© <span class="year-auto">2024</span> Capitex Finance Ltd.</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span></div></footer>
+<button class="chat-fab" id="chatFab">💬</button>
+<div class="chat-panel" id="chatPanel"><div class="chat-hdr"><div><h4>Talk to an Advisor</h4><p>Usually replies within 2 hours</p></div><button class="chat-close" id="chatClose">✕</button></div><form class="chat-body" id="chatForm"><input type="hidden" name="_source" value="careers-chat"/><input type="text" name="name" placeholder="Your name" required/><input type="email" name="email" placeholder="Email address" required/><textarea name="message" rows="3" required></textarea><button type="submit" class="btn btn-gold btn-full">Send Message</button></form></div>
+<button class="to-top" aria-label="Back to top">↑</button>
+<script>
+function openApply(role){
+  document.getElementById('applyRole').textContent=role;
+  document.getElementById('applyRoleField').value=role;
+  document.getElementById('applyModal').classList.add('open');
+}
+</script>
+<script defer src="../assets/js/main.js"></script>
+</body>
+</html>
